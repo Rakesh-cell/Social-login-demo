@@ -5,7 +5,6 @@
  * @format
  * @flow strict-local
  */
-
 import React from 'react';
 import {
   SafeAreaView,
@@ -13,18 +12,28 @@ import {
   Text,
   View,
 } from 'react-native';
+import RootNavigation from './Homescreen'
+import { createStackNavigator } from '@react-navigation/stack'
+import { NavigationContainer } from '@react-navigation/native';
+import Login from './Login'
+
+
+
+import Homescreen from './Homescreen';
+const RootStack = createStackNavigator();
 
 const App = () => {
 
   return (
-    <SafeAreaView>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic">
-        <View style={{ justifyContent: 'center', }}>
-          <Text style={{ alignItems: 'center' }}> Hello World</Text>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <NavigationContainer>
+      <RootStack.Navigator>
+        
+          <RootStack.Screen name="Login" component={Login} options={{ headerShown: false }} /> 
+          <RootStack.Screen name="Homescreen" component={Homescreen} />
+        
+
+      </RootStack.Navigator>
+    </NavigationContainer>
   );
 };
 

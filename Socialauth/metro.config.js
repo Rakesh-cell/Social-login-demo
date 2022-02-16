@@ -6,6 +6,7 @@
  */
 
 module.exports = {
+
   transformer: {
     getTransformOptions: async () => ({
       transform: {
