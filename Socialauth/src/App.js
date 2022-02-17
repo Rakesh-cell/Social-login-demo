@@ -15,26 +15,14 @@ import {
 import RootNavigation from './Homescreen'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native';
-import Login from './Login'
 
+import Providers from './Providers';
 
-
-import Homescreen from './Homescreen';
-const RootStack = createStackNavigator();
 
 const App = () => {
 
-  return (
-    <NavigationContainer>
-      <RootStack.Navigator>
-        
-          <RootStack.Screen name="Login" component={Login} options={{ headerShown: false }} /> 
-          <RootStack.Screen name="Homescreen" component={Homescreen} />
-        
-
-      </RootStack.Navigator>
-    </NavigationContainer>
-  );
+  return <Providers/>
+   
 };
 
 

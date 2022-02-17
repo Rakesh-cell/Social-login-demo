@@ -1,17 +1,22 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import { SafeAreaView, StyleSheet, TextInput,Button,TouchableOpacity } from "react-native";
 import { View, Text } from 'react-native'
-
+import { AuthContext } from './AuthProvider';
 
 const Homescreen = ({ navigation}) => {
     console.log("homescreen",navigation);
-
+    const {user, logout,googleSignOut} = useContext(AuthContext);
     return (
         <SafeAreaView style={{flex:1}}>
             <View style={styles.mainview}>
                 <Text> Home Screen</Text>
-                <TouchableOpacity onPress={() =>{navigation.navigate("Login")}}>
-                    <Text>Login</Text>
+                <Text> {user?.uid}</Text>
+
+                <TouchableOpacity onPress={() =>logout()}>
+                    <Text> click to Login out</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() =>googleSignOut()}>
+                    <Text> googleSignOut</Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>
