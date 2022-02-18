@@ -4,6 +4,8 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h> // <- Add This Import
+#import <React/RCTLinkingManager.h> // <- Add This Import
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -28,6 +30,7 @@ static void InitializeFlipper(UIApplication *application) {
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [FBSDKApplicationDelegate.sharedInstance initializeSDK];
   if ([FIRApp defaultApp] == nil) {
     [FIRApp configure];
   }
@@ -62,5 +65,15 @@ static void InitializeFlipper(UIApplication *application) {
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
 }
+
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+  return [[FBSDKApplicationDelegate sharedInstance]application:app
+                                                       openURL:url
+                                                       options:options];
+}
+
 
 @end

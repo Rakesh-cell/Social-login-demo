@@ -31,6 +31,31 @@
 			</array>
 		</dict>
 	</array>
+  
+  
+  <key>CFBundleURLTypes</key>
+  <array>
+    <dict>
+    <key>CFBundleURLSchemes</key>
+    <array>
+      <string>fb693673814986915</string>
+    </array>
+    </dict>
+  </array>
+  <key>FacebookAPPID</key>
+  <string>693673814986915</string>
+  <key>FacebookClientToken</key>
+  <string>796ce9e9504c7c7fb3eb52b2f7113765</string>
+  <key>FacebookDisplayName</key>
+  <string>Socialauth</string>
+  
+  
+  <key>LSApplicationQueriesSchemes</key>
+  <array>
+    <string>fbapi</string>
+    <string>fb-messenger-share-api</string>
+  </array>
+  
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
