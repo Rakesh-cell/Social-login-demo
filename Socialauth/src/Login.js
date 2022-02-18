@@ -7,7 +7,7 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 const Login = ({ navigation }) => {
     const [text, onChangeText] = useState();
     const [number, onChangeNumber] = useState();
-    const {register,login,googleLogin} = useContext(AuthContext);
+    const {register,login,googleLogin,fbLogin} = useContext(AuthContext);
 
     useEffect(() => {
         // initialize the Google SDK
@@ -46,7 +46,7 @@ const Login = ({ navigation }) => {
             </View>
             <View style={styles.btnstyle}>
                 <Button  onPress={() =>googleLogin()} title="google"></Button>
-                <Button  onPress={() =>{}} title="facebook"></Button>
+                <Button  onPress={() =>fbLogin()} title="facebook"></Button>
                 </View>
         </SafeAreaView>
     );
