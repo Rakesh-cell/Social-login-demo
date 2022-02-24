@@ -5,8 +5,8 @@ import {AuthContext} from './AuthProvider'
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 const Login = ({ navigation }) => {
-    const [text, onChangeText] = useState();
-    const [number, onChangeNumber] = useState();
+    const [email, setemail] = useState();
+    const [password, setpassword] = useState();
     const {register,login,googleLogin,fbLogin} = useContext(AuthContext);
 
     useEffect(() => {
@@ -20,26 +20,27 @@ const Login = ({ navigation }) => {
         <SafeAreaView style={{flex: 1}}>
             <View style={styles.container}>
             <Text style={{alignSelf:'flex-start',marginLeft:18}}>email</Text>
-
                 <TextInput
                     style={styles.input}
-                    onChangeText={(mail)=>onChangeText(mail)}
-                    value={text}
+                    onChangeText={(mail)=>setemail(mail)}
+                    value={email}
+                    placeholder="Enter Email"
+
                 />
                 <Text style={{alignSelf:'flex-start',marginLeft:18}}>password</Text>
 
                 <TextInput
                     style={styles.input}
-                    onChangeText={(pwd)=>onChangeNumber(pwd)}
-                    value={number}
-                    placeholder="useless placeholder"
+                    onChangeText={(pwd)=>setpassword(pwd)}
+                    value={password}
+                    placeholder="Enter Password"
                     secureTextEntry={true}
 
                 />
-                <TouchableOpacity onPress={() => login(text,number)}>
+                <TouchableOpacity onPress={() => login(email,password)}>
                     <Text>Login</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => register(text, number)}>
+                <TouchableOpacity onPress={() => register(email, password)}>
                     <Text>Signup</Text>
                 </TouchableOpacity>
                 
@@ -70,7 +71,9 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-around"
 
-    }
+    },
+    
+
 });
 
 export default Login;
