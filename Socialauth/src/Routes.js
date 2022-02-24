@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Login from './Login'
 
 import Homescreen from './Homescreen';
+import AuthStack from './Navigation/AuthStack'
 
 const RootStack = createStackNavigator();
 
@@ -32,7 +33,8 @@ const Routes = () => {
             <RootStack.Navigator>
                 {!user?
                     <>
-                    <RootStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+                    <RootStack.Screen name="AuthStack" component={AuthStack} options={{ headerShown: false }} />
+                    {/* <AuthStack/> */}
                     </>
                     :<> 
                     <RootStack.Screen name="Homescreen" component={Homescreen} />
