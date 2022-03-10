@@ -107,15 +107,6 @@ const Login = ({ navigation }) => {
                 <Text style={styles.ptext} onPress={() => navigation.navigate('Signup')}> Sign Up </Text>
         </View>
 
-
-
-
-       
-
-                <TouchableOpacity onPress={() => register(email, password)}>
-                    <Text>Signup</Text>
-                </TouchableOpacity>
-                
             </View>
             <View style={styles.btnstyle}>
                 <Button  onPress={() =>googleLogin()} title="google"></Button>
@@ -174,6 +165,15 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         color:'#000000'
     },
+    ptext:{
+        
+        color:'blue'
+   },
+   pstyle:{
+       alignSelf: 'flex-end',
+        marginVertical: 10,
+        marginRight:20,
+   }
   
 
 });

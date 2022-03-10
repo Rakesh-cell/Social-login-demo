@@ -9,6 +9,7 @@ const Stack =createStackNavigator();
 
 import OnboardScreen from '../OnboardScreen'
 import Login from '../Login'
+import Signup from '../Signup'
 
 
 
@@ -41,27 +42,7 @@ const AuthStack = () => {
     <Stack.Navigator  initialRouteName={routeName}>
         <Stack.Screen name='Onboarding' component={OnboardScreen} options={{header:()=>null}}/>
         <Stack.Screen name='Login' component={Login} options={{header:()=>null}}/>
-        {/* <Stack.Screen name='Signup' component={SignupScreen} 
-        options={({navigation}) => ({
-         title: '',
-         headerStyle: {
-           backgroundColor: '#f9fafd',
-           shadowColor: '#f9fafd',
-           elevation: 0,
-         },
-         headerLeft: () => (
-           <View style={{marginLeft: 10}}>
-             <FontAwesome.Button 
-               name="long-arrow-left"
-               size={25}
-               backgroundColor="#f9fafd"
-               color="#333"
-               onPress={() => navigation.navigate('Login')}
-             />
-           </View>
-         ), */}
-       {/* })} */}
-        {/* /> */}
+        <Stack.Screen name="Signup" component={Signup} options={{header:()=>null}}/>
 
 
     </Stack.Navigator>
