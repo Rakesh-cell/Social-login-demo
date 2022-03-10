@@ -21,6 +21,10 @@ const Homescreen = ({ navigation}) => {
                 <TouchableOpacity onPress={() =>fbLogout()}>
                     <Text> FB_ Logout</Text>
                 </TouchableOpacity>
+                <TouchableOpacity onPress={() =>navigation.navigate('ChatUser')}>
+                    <Text> Chat users list</Text>
+                </TouchableOpacity>
+                
             </View>
         </SafeAreaView>
     );

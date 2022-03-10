@@ -3,10 +3,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 import { AuthContext } from './AuthProvider';
 import { createStackNavigator } from '@react-navigation/stack'
-import Login from './Login'
 
+import ChatScreen from './ChatScreen'
+import Login from './Login'
 import Homescreen from './Homescreen';
 import AuthStack from './Navigation/AuthStack'
+import ChatUsers from './ChatUsers';
 
 const RootStack = createStackNavigator();
 
@@ -26,18 +28,23 @@ const Routes = () => {
 
     if (initializing) return null;
 
-    console.log("user" ,user);
+    console.log("user", user);
 
     return (
         <NavigationContainer>
             <RootStack.Navigator>
-                {!user?
+                {!user ?
                     <>
-                    <RootStack.Screen name="AuthStack" component={AuthStack} options={{ headerShown: false }} />
-                    {/* <AuthStack/> */}
+                        <RootStack.Screen name="AuthStack" component={AuthStack} options={{ headerShown: false }} />
+                        {/* <AuthStack/> */}
                     </>
-                    :<> 
-                    <RootStack.Screen name="Homescreen" component={Homescreen} />
+                    : <>
+                        <RootStack.Screen name="Homescreen" component={Homescreen} />
+                        <RootStack.Screen name='ChatUser' component={ChatUsers} />
+                        <RootStack.Screen name='Chat' component={ChatScreen} options={({ route }) => ({
+                            title: route.params.userName,
+                            headerBackTitleVisible: false,
+                        })} />
 
                     </>
                 }
