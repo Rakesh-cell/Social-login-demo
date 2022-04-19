@@ -5,7 +5,7 @@
  * @format
  * @flow strict-local
  */
-import React from 'react';
+import React,{useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -15,11 +15,15 @@ import {
 import RootNavigation from './Homescreen'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native';
+import {notifications } from './Notification/Notifications'
 
 import Providers from './Providers';
-
+ 
 
 const App = () => {
+  useEffect(() => {
+    notifications.configure()
+},[])
 
   return <Providers/>
    

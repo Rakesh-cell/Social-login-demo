@@ -4,6 +4,7 @@ import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 import { Settings } from 'react-native-fbsdk-next';
+import firestore from '@react-native-firebase/firestore';
 
 export const AuthContext = createContext();
 
@@ -22,9 +23,24 @@ export const AuthProvider = ({ children }) => {
             console.log(e);
           }
         },
-        register: async (email, password) => {
+        register: async (email, password, fname, lname) => {
           try {
             await auth().createUserWithEmailAndPassword(email, password);
+            let uid=user?.uid
+            firestore()
+              .collection('Users')
+              .doc(auth().currentUser.uid)
+              .set({
+                fname: fname,
+                lname: lname,
+                email:email,
+                userId: auth().currentUser.uid,
+                
+              })
+              .then(() => {
+                console.log('User added!');
+              });
+
           } catch (e) {
             console.log(e);
           }
@@ -81,14 +97,14 @@ export const AuthProvider = ({ children }) => {
             console.log(error);
           }
         },
-        fbLogout:async () => { 
-              try{
-                  LoginManager.logOut();
-                  setUser(null)
-              }
-              catch (error) {
-                console.log(error);
-              }
+        fbLogout: async () => {
+          try {
+            LoginManager.logOut();
+            setUser(null)
+          }
+          catch (error) {
+            console.log(error);
+          }
         }
       }}>
       {children}

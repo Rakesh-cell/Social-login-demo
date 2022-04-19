@@ -34,7 +34,7 @@ const Signup = ({ navigation}) => {
             Alert.alert("Password", "Password must be atleast 8 chars")
         }
         else {
-            register(email, password)
+            register(email, password,fname,lname)
         }
 
         // dispatch(signInUser(formData))

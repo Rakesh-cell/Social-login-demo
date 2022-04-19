@@ -1,5 +1,5 @@
 import React, { useState,useContext, useEffect} from "react";
-import { SafeAreaView, StyleSheet, TextInput, Text, TouchableOpacity, View ,Button} from "react-native";
+import { SafeAreaView, StyleSheet, TextInput,Alert, Text, TouchableOpacity, View ,Button} from "react-native";
 import {AuthContext} from './AuthProvider'
 import Inputfield from './components/Inputfield'
 
